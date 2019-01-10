@@ -1,0 +1,20 @@
+server:
+  port: 5555
+eurkea: 
+  instance: 
+    preferIpAddress : true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: gateway-service
+zuul:
+  ignored-services: '*'
+  prefix: /api
+  routes:
+    itemservice:  /items/**
+    userservice:  /users/**
+    authorization-server : /authorization/**
